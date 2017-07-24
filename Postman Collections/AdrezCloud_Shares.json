@@ -1,7 +1,7 @@
 {
   "variables": [],
   "info": {
-    "name": "AdrezCloud Shares 2",
+    "name": "AdrezCloud Shares",
     "_postman_id": "5b531fe4-5553-28eb-d7f9-4ea085b94960",
     "description": "",
     "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -9,7 +9,7 @@
   "item": [
     {
       "_postman_id": "d93aa32c-7796-4a6c-5153-2188e5c4b553",
-      "name": "Find share by name too",
+      "name": "Find share by name",
       "event": [
         {
           "listen": "test",
@@ -132,6 +132,58 @@
     {
       "_postman_id": "27e18a10-1852-c292-ff5c-80f5989929d7",
       "name": "Share - template",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "templateType",
+              "value": "matrix",
+              "description": "matrix defintion",
+              "type": "text"
+            },
+            {
+              "key": "filename",
+              "value": "test.json",
+              "description": "the file to load",
+              "type": "text"
+            },
+            {
+              "key": "importType",
+              "value": "object",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Changes the template definition\n- templateType : matrix or tree\n- filename: string the file to import from the template directory\n- importType: object, objects, array\n- firstRow: the start row or the import\n- skipKeys: the keys not to import (array)"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3e63b4c1-030a-b886-123c-0685f34e27c3",
+      "name": "Share - template copy",
       "event": [
         {
           "listen": "test",
