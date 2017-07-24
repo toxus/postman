@@ -202,32 +202,13 @@
         "header": [
           {
             "key": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
+            "value": "application/json",
             "description": ""
           }
         ],
         "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "templateType",
-              "value": "matrix",
-              "description": "matrix defintion",
-              "type": "text"
-            },
-            {
-              "key": "filename",
-              "value": "test.json",
-              "description": "the file to load",
-              "type": "text"
-            },
-            {
-              "key": "importType",
-              "value": "object",
-              "description": "",
-              "type": "text"
-            }
-          ]
+          "mode": "raw",
+          "raw": "{ \"data\": {\n\t\"A\": \"1234\", \"B\":\"Jaap\", \"C\":\"van der\", \"D\":\"Kreeft\",\n\t\"E\":\"Toxus\",\"F\":\"info@example.com\",\"G\":\"0612345678\",\"H\":\"\",\n\t\"I\":\"Eerste weg\",\"J\":\"12\",\"K\":\"1017TE\",\"L\":\"Adam\"\t\n\t}\n}"
         },
         "description": ""
       },
