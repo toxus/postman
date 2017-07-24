@@ -197,8 +197,8 @@
         }
       ],
       "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
-        "method": "PATCH",
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/changed",
+        "method": "POST",
         "header": [
           {
             "key": "Content-Type",
