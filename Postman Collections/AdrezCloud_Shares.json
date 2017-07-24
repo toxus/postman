@@ -1,0 +1,307 @@
+{
+  "variables": [],
+  "info": {
+    "name": "AdrezCloud Shares",
+    "_postman_id": "5b531fe4-5553-28eb-d7f9-4ea085b94960",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "da05be1d-930d-e92d-24e9-edea9e570d63",
+      "name": "{{protocol}}://{{host}}{{port}}/shares/find?name=trigger",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data[0]._id);",
+              "",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": {
+          "raw": "{{protocol}}://{{host}}{{port}}/shares/find?name=trigger",
+          "protocol": "{{protocol}}",
+          "auth": {},
+          "host": [
+            "{{host}}{{port}}"
+          ],
+          "path": [
+            "shares",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "trigger",
+              "equals": true,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "do@toxus.nl",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "dd6c6a1a-a7a2-bb6f-e93f-749146f7f728",
+      "name": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
+        "method": "DELETE",
+        "header": [],
+        "body": {},
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "a1238b46-aaf7-196d-292e-cd1abe978224",
+      "name": "{{protocol}}://{{host}}{{port}}/shares",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Postman Template",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "shareType",
+              "value": "import",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "isDebug",
+              "value": "true",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "856de6e1-06ad-5cbe-3c74-6e64741bc377",
+      "name": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "templateType",
+              "value": "matrix",
+              "description": "matrix defintion",
+              "type": "text"
+            },
+            {
+              "key": "filename",
+              "value": "test.json",
+              "description": "the file to load",
+              "type": "text"
+            },
+            {
+              "key": "importType",
+              "value": "object",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "ebfa19c1-ca7e-4bc2-64cd-07515dcc477a",
+      "name": "Add a share",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Postman Template",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "shareType",
+              "value": "import",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "isDebug",
+              "value": "true",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Add the basic information of a share and set the shareIdTest"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d93aa32c-7796-4a6c-5153-2188e5c4b553",
+      "name": "Find share by name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data[0]._id);",
+              "",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": {
+          "raw": "{{protocol}}://{{host}}{{port}}/shares/find?name=trigger",
+          "protocol": "{{protocol}}",
+          "auth": {},
+          "host": [
+            "{{host}}{{port}}"
+          ],
+          "path": [
+            "shares",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "trigger",
+              "equals": true,
+              "description": ""
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "do@toxus.nl",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Find a share by it's name. Uses a regex to find information"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "20474077-8840-569f-c041-0c34ff7a40ff",
+      "name": "Remove existing share",
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
+        "method": "DELETE",
+        "header": [],
+        "body": {},
+        "description": "Removes the share, not deleting any other information for starting a clean test"
+      },
+      "response": []
+    }
+  ]
+}
