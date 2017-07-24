@@ -64,60 +64,6 @@
       "response": []
     },
     {
-      "_postman_id": "a1238b46-aaf7-196d-292e-cd1abe978224",
-      "name": "{{protocol}}://{{host}}{{port}}/shares",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "var data = JSON.parse(responseBody);",
-              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "name",
-              "value": "Postman Template",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "shareType",
-              "value": "import",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "isDebug",
-              "value": "true",
-              "description": "",
-              "type": "text"
-            }
-          ]
-        },
-        "description": ""
-      },
-      "response": []
-    },
-    {
       "_postman_id": "856de6e1-06ad-5cbe-3c74-6e64741bc377",
       "name": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
       "event": [
