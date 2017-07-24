@@ -183,7 +183,7 @@
     },
     {
       "_postman_id": "3e63b4c1-030a-b886-123c-0685f34e27c3",
-      "name": "Share - template copy",
+      "name": "Share - changed trigger",
       "event": [
         {
           "listen": "test",
