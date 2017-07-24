@@ -64,58 +64,6 @@
       "response": []
     },
     {
-      "_postman_id": "856de6e1-06ad-5cbe-3c74-6e64741bc377",
-      "name": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              ""
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "templateType",
-              "value": "matrix",
-              "description": "matrix defintion",
-              "type": "text"
-            },
-            {
-              "key": "filename",
-              "value": "test.json",
-              "description": "the file to load",
-              "type": "text"
-            },
-            {
-              "key": "importType",
-              "value": "object",
-              "description": "",
-              "type": "text"
-            }
-          ]
-        },
-        "description": ""
-      },
-      "response": []
-    },
-    {
       "_postman_id": "ebfa19c1-ca7e-4bc2-64cd-07515dcc477a",
       "name": "Add a share",
       "event": [
@@ -234,6 +182,58 @@
         "header": [],
         "body": {},
         "description": "Removes the share, not deleting any other information for starting a clean test"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "27e18a10-1852-c292-ff5c-80f5989929d7",
+      "name": "Share - template",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "templateType",
+              "value": "matrix",
+              "description": "matrix defintion",
+              "type": "text"
+            },
+            {
+              "key": "filename",
+              "value": "test.json",
+              "description": "the file to load",
+              "type": "text"
+            },
+            {
+              "key": "importType",
+              "value": "object",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": ""
       },
       "response": []
     }
