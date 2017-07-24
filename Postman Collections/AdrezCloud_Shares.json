@@ -64,18 +64,6 @@
       "response": []
     },
     {
-      "_postman_id": "dd6c6a1a-a7a2-bb6f-e93f-749146f7f728",
-      "name": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
-        "method": "DELETE",
-        "header": [],
-        "body": {},
-        "description": ""
-      },
-      "response": []
-    },
-    {
       "_postman_id": "a1238b46-aaf7-196d-292e-cd1abe978224",
       "name": "{{protocol}}://{{host}}{{port}}/shares",
       "event": [
