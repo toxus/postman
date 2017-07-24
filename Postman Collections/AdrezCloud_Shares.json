@@ -8,60 +8,6 @@
   },
   "item": [
     {
-      "_postman_id": "ebfa19c1-ca7e-4bc2-64cd-07515dcc477a",
-      "name": "Add a share",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "var data = JSON.parse(responseBody);",
-              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "name",
-              "value": "Postman Template",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "shareType",
-              "value": "import",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "isDebug",
-              "value": "true",
-              "description": "",
-              "type": "text"
-            }
-          ]
-        },
-        "description": "Add the basic information of a share and set the shareIdTest"
-      },
-      "response": []
-    },
-    {
       "_postman_id": "d93aa32c-7796-4a6c-5153-2188e5c4b553",
       "name": "Find share by name",
       "event": [
@@ -114,6 +60,60 @@
           ]
         },
         "description": "Find a share by it's name. Uses a regex to find information"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "ebfa19c1-ca7e-4bc2-64cd-07515dcc477a",
+      "name": "Add a share",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Postman Template",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "shareType",
+              "value": "import",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "isDebug",
+              "value": "true",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Add the basic information of a share and set the shareIdTest"
       },
       "response": []
     },
