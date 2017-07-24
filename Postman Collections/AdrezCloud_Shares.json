@@ -9,7 +9,7 @@
   "item": [
     {
       "_postman_id": "d93aa32c-7796-4a6c-5153-2188e5c4b553",
-      "name": "Find share by name",
+      "name": "Find share by name too",
       "event": [
         {
           "listen": "test",
