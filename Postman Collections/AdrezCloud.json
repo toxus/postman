@@ -1,0 +1,513 @@
+{
+  "variables": [],
+  "info": {
+    "name": "AdrezCloud",
+    "_postman_id": "dad4dd11-6815-4ad5-ada9-fea9b8c64b0d",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "d42f09f4-c3c6-8503-36f2-ec14a3743a84",
+      "name": "Account management",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "c564690e-0941-cf1f-4a8f-fbacbb8358a3",
+          "name": "reset Debug",
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/system/resetDebug",
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "do@toxus.nl",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "id": "7f0c39f4-8a2c-451a-a79e-c59c7183e109",
+              "name": "Test of Example",
+              "originalRequest": {
+                "url": "{{protocol}}://{{host}}{{port}}/system/resetDebug",
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "do@toxus.nl",
+                      "description": "",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "_postman_previewtype": "parsed",
+              "header": [],
+              "cookie": [],
+              "responseTime": "0",
+              "body": "{\n\t\"message\": \"ok\"\n}"
+            }
+          ]
+        },
+        {
+          "_postman_id": "b923054a-a380-58c3-06fe-edb372a94057",
+          "name": "users/createuser",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.clearGlobalVariable(\"jwt_token\");",
+                  "postman.setGlobalVariable(\"jwt_token\", data.id_token);",
+                  "",
+                  "tests[\"Has got an id_token\"] = responseBody.has(\"id_token\");",
+                  "tests[\"Successful POST request\"] = responseCode.code === 201 || responseCode.code === 202;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "do@toxus.nl"
+                },
+                {
+                  "key": "password",
+                  "value": "12345"
+                },
+                {
+                  "key": "firstName",
+                  "value": "John"
+                },
+                {
+                  "key": "lastName",
+                  "value": "Doe"
+                },
+                {
+                  "key": "noConfirmation",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a307fd42-1c61-372d-3b14-aabc5f9df284",
+          "name": "users/authenticate",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var data = JSON.parse(responseBody);",
+                  "postman.clearGlobalVariable(\"jwt_token\");",
+                  "postman.setGlobalVariable(\"jwt_token\", data._id_token);",
+                  "",
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "tests[\"id_token is returned\"] = responseBody.has(\"_id_token\");",
+                  "tests[\"email is returend\"] = data.email == 'do@toxus.nl';",
+                  "tests[\"firstName\"] = data.firstName == \"John\";",
+                  "tests[\"lastName\"] = data.lastName == \"Doe\"",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/authenticate",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU5MmVkNGFhYzNjNTk1ODUwYmE3ZjAwMiIsImVtYWlsIjoiamFhcEB0b3h1cy5ubCIsImlhdCI6MTQ5NjY1NjU5NywiZXhwIjoxNDk2NzQyOTk3fQ.ccZOwUnZcimf8o--B171OzZEOinFk8UGl13Bsuwip4Y",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "do@toxus.nl"
+                },
+                {
+                  "key": "password",
+                  "value": "12345"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "af338af3-eda8-5f90-6da9-6f963efff904",
+          "name": "users/authenticate - no rights",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 403\"] = responseCode.code === 403;",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/authenticate",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjU5MmVkNGFhYzNjNTk1ODUwYmE3ZjAwMiIsImVtYWlsIjoiamFhcEB0b3h1cy5ubCIsImlhdCI6MTQ5NjY1NjU5NywiZXhwIjoxNDk2NzQyOTk3fQ.ccZOwUnZcimf8o--B171OzZEOinFk8UGl13Bsuwip4Y",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "do@toxus.nl"
+                },
+                {
+                  "key": "password",
+                  "value": "123"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "41686350-6a8c-e633-7473-d167761e2b31",
+          "name": "users/getConfig - activation key",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Returns a activation key\"] = responseBody.has(\"key\");",
+                  "var data = JSON.parse(responseBody);",
+                  "postman.setGlobalVariable(\"activation_key\", data.key);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/config/activation",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "84362c00-69c2-a15e-ed13-52940e79b85f",
+          "name": "users/activationKey",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Email must exist\"] = jsonData.user.email === 'do@toxus.nl';",
+                  "tests[\"Firstname must exist\"] = jsonData.user.firstName === 'John';",
+                  "tests[\"Lastname must exist\"] = jsonData.user.lastName === 'Doe';"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/activation/{{activation_key}}",
+            "method": "GET",
+            "header": [
+              {
+                "key": "",
+                "value": "",
+                "description": "",
+                "disabled": true
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f468291f-47a8-2688-6341-3bb7c5b2aaf1",
+          "name": "users/saveConfig",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Options are returne\"] = jsonData.option.autoSave === \"1\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/config/option",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "autoSave",
+                  "value": "1"
+                },
+                {
+                  "key": "confirmDelete",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "8d400bd1-dd46-3ca2-5684-db9aa5787631",
+          "name": "users/getConfig",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Check data is stored\"] = jsonData.confirmDelete === \"0\";"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/config/option",
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f0ebf080-7a62-a435-5d1d-fc18f37d16ba",
+          "name": "users/confirmEmail",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"user does exists\"] = jsonData.user;",
+                  "if (jsonData.user) {",
+                  "    tests[\"Email does exists\"] = jsonData.user.email === \"do@toxus.nl\";",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users/confirmEmail/{{activation_key}}",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "acceptTerms",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "16f2a671-25ea-a5ba-dd3d-416215665dde",
+          "name": "users/updateUser - duplicate email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"The email does exist\"] = responseCode.code === 409;",
+                  "",
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "mod1@toxus.nl"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "f130b922-9a89-b3bf-9fa2-4df747db770d",
+          "name": "users/updateUser - update email",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "tests[\"Returns user object\"] = jsonData.user;",
+                  "if (jsonData.user) {",
+                  "    tests[\"Returns new email address\"] = jsonData.user.email == \"do2@toxus.nl\";",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "url": "{{protocol}}://{{host}}{{port}}/users",
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded; charset=utf-8",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "do2@toxus.nl"
+                },
+                {
+                  "key": "password",
+                  "value": "54321",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
