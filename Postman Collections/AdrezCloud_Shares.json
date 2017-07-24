@@ -9,7 +9,7 @@
   "item": [
     {
       "_postman_id": "da05be1d-930d-e92d-24e9-edea9e570d63",
-      "name": "{{protocol}}://{{host}}{{port}}/shares/find?name=trigger",
+      "name": "Find a share",
       "event": [
         {
           "listen": "test",
