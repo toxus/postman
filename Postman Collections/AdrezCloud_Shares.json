@@ -237,7 +237,7 @@
     },
     {
       "_postman_id": "b0bdf5ac-e83d-e3b3-aa47-0cc409500a6e",
-      "name": "Share - template copy",
+      "name": "Share - external",
       "event": [
         {
           "listen": "test",
