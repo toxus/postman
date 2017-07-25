@@ -130,60 +130,6 @@
       "response": []
     },
     {
-      "_postman_id": "d41b7da4-2454-e43a-970b-e5f6db8f30fa",
-      "name": "Add a share copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "var data = JSON.parse(responseBody);",
-              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/x-www-form-urlencoded",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "urlencoded",
-          "urlencoded": [
-            {
-              "key": "name",
-              "value": "Postman Template",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "shareType",
-              "value": "import",
-              "description": "",
-              "type": "text"
-            },
-            {
-              "key": "isDebug",
-              "value": "true",
-              "description": "",
-              "type": "text"
-            }
-          ]
-        },
-        "description": "Add the basic information of a share and set the shareIdTest"
-      },
-      "response": []
-    },
-    {
       "_postman_id": "27e18a10-1852-c292-ff5c-80f5989929d7",
       "name": "Share - template",
       "event": [
@@ -265,6 +211,60 @@
           "raw": "{ \"data\": {\n\t\"A\": \"1234\", \"B\":\"Jaap\", \"C\":\"van der\", \"D\":\"Kreeft\",\n\t\"E\":\"Toxus\",\"F\":\"info@example.com\",\"G\":\"0612345678\",\"H\":\"\",\n\t\"I\":\"Eerste weg\",\"J\":\"12\",\"K\":\"1017TE\",\"L\":\"Adam\"\t\n\t}\n}"
         },
         "description": ""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d41b7da4-2454-e43a-970b-e5f6db8f30fa",
+      "name": "Add a share copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var data = JSON.parse(responseBody);",
+              "postman.setEnvironmentVariable(\"shareIdTest\", data._id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "Postman Template",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "shareType",
+              "value": "import",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "isDebug",
+              "value": "true",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Add the basic information of a share and set the shareIdTest"
       },
       "response": []
     }
