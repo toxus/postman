@@ -236,39 +236,6 @@
       "response": []
     },
     {
-      "_postman_id": "3e63b4c1-030a-b886-123c-0685f34e27c3",
-      "name": "Share - changed trigger",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              ""
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/changed",
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json",
-            "description": ""
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{ \"data\": {\n\t\"A\": \"1234\", \"B\":\"Jaap\", \"C\":\"van der\", \"D\":\"Kreeft\",\n\t\"E\":\"Toxus\",\"F\":\"info@example.com\",\"G\":\"0612345678\",\"H\":\"\",\n\t\"I\":\"Eerste weg\",\"J\":\"12\",\"K\":\"1017TE\",\"L\":\"Adam\"\t\n\t}\n}"
-        },
-        "description": ""
-      },
-      "response": []
-    },
-    {
       "_postman_id": "b0bdf5ac-e83d-e3b3-aa47-0cc409500a6e",
       "name": "Share - template copy",
       "event": [
@@ -317,6 +284,39 @@
           ]
         },
         "description": "Changes the template definition\n- templateType : matrix or tree\n- filename: string the file to import from the template directory\n- importType: object, objects, array\n- firstRow: the start row or the import\n- skipKeys: the keys not to import (array)"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3e63b4c1-030a-b886-123c-0685f34e27c3",
+      "name": "Share - changed trigger",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/changed",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"data\": {\n\t\"A\": \"1234\", \"B\":\"Jaap\", \"C\":\"van der\", \"D\":\"Kreeft\",\n\t\"E\":\"Toxus\",\"F\":\"info@example.com\",\"G\":\"0612345678\",\"H\":\"\",\n\t\"I\":\"Eerste weg\",\"J\":\"12\",\"K\":\"1017TE\",\"L\":\"Adam\"\t\n\t}\n}"
+        },
+        "description": ""
       },
       "response": []
     }
