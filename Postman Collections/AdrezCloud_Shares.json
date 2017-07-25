@@ -179,7 +179,7 @@
             }
           ]
         },
-        "description": "Add the basic information of a share and set the shareIdTest"
+        "description": "shareType is limited in values"
       },
       "response": []
     },
