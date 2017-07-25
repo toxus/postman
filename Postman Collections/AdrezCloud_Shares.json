@@ -267,6 +267,58 @@
         "description": ""
       },
       "response": []
+    },
+    {
+      "_postman_id": "b0bdf5ac-e83d-e3b3-aa47-0cc409500a6e",
+      "name": "Share - template copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}/template",
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": ""
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "templateType",
+              "value": "matrix",
+              "description": "matrix defintion",
+              "type": "text"
+            },
+            {
+              "key": "filename",
+              "value": "test.json",
+              "description": "the file to load",
+              "type": "text"
+            },
+            {
+              "key": "importType",
+              "value": "object",
+              "description": "",
+              "type": "text"
+            }
+          ]
+        },
+        "description": "Changes the template definition\n- templateType : matrix or tree\n- filename: string the file to import from the template directory\n- importType: object, objects, array\n- firstRow: the start row or the import\n- skipKeys: the keys not to import (array)"
+      },
+      "response": []
     }
   ]
 }
