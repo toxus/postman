@@ -64,6 +64,18 @@
       "response": []
     },
     {
+      "_postman_id": "20474077-8840-569f-c041-0c34ff7a40ff",
+      "name": "Remove existing share",
+      "request": {
+        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
+        "method": "DELETE",
+        "header": [],
+        "body": {},
+        "description": "Removes the share, not deleting any other information for starting a clean test"
+      },
+      "response": []
+    },
+    {
       "_postman_id": "ebfa19c1-ca7e-4bc2-64cd-07515dcc477a",
       "name": "Add a share",
       "event": [
@@ -114,18 +126,6 @@
           ]
         },
         "description": "Add the basic information of a share and set the shareIdTest"
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "20474077-8840-569f-c041-0c34ff7a40ff",
-      "name": "Remove existing share",
-      "request": {
-        "url": "{{protocol}}://{{host}}{{port}}/shares/{{shareIdTest}}",
-        "method": "DELETE",
-        "header": [],
-        "body": {},
-        "description": "Removes the share, not deleting any other information for starting a clean test"
       },
       "response": []
     },
