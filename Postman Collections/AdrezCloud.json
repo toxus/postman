@@ -513,7 +513,20 @@
       "_postman_id": "cd20f9b1-d4d9-b3f4-cc21-761eca4b1133",
       "name": "Runner",
       "description": "",
-      "item": []
+      "item": [
+        {
+          "_postman_id": "45754a1f-61ed-600d-32c7-fec53007ed97",
+          "name": "Import from API",
+          "request": {
+            "url": "{{RunnerAPI}}/api/runner/idOfShare/import",
+            "method": "POST",
+            "header": [],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        }
+      ]
     }
   ]
 }
